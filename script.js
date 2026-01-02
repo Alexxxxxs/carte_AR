@@ -30,7 +30,7 @@ AFRAME.registerComponent('gestion-carte', {
       fond.setAttribute('width', '1');
       fond.setAttribute('height', '0.6');
       fond.setAttribute('rotation', '-90 0 0');
-      fond.setAttribute('position', '0 0.02 0'); // Anti Z-Fighting
+      fond.setAttribute('position', '0 0.04 0'); // Anti Z-Fighting
   
       this.el.appendChild(fond);
       console.log("🟦 Rectangle bleu (fond) chargé avec succès.");
