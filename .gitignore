@@ -1,106 +1,13 @@
 # macOS
 .DS_Store
-.AppleDouble
-.LSOverride
-Icon
 ._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
 
-# Thumbnails
-.Thumbs.db
-ehthumbs.db
-
-# IDE - VSCode
+# IDE
 .vscode/
-*.swp
-*.swo
-*~
-.project
-.classpath
-.settings/
-
-# IDE - IntelliJ IDEA
 .idea/
-*.iml
-*.iws
-*.ipr
-out/
-
-# IDE - Xcode
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-*.xcworkspace/*
-!*.xcworkspace/contents.xcworkspacedata
-build/
-DerivedData/
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-.venv
-pip-log.txt
-pip-delete-this-directory.txt
-.pytest_cache/
-.coverage
-htmlcov/
-*.egg-info/
-dist/
-build/
-
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-.npm
-.eslintcache
-.yarn-integrity
-.next/
-out/
-.nuxt/
-.cache/
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Logs
-logs/
-*.log
 
 # Temporary files
 *.tmp
-*.temp
 *.bak
-*.backup
-
-# Archives
-*.zip
-*.tar
-*.tar.gz
-*.rar
-
+*.swp
+*~
