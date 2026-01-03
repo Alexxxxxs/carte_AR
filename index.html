@@ -5,16 +5,26 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     
-    <script src="script.js"></script>
+    <script src="loader.js"></script>
+    <script src="content.js"></script>
+    <script src="app.js"></script>
   </head>
   
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
+      <a-assets>
+        <!-- Précharge le logo utilisé sur le cercle latéral -->
+        <img id="logo" src="./Logo-black.png" crossorigin="anonymous">
+        <!-- Logos réseaux sociaux -->
+        <img id="logo-linkedin" src="./logo-linkedin.png" crossorigin="anonymous">
+        <img id="logo-instagram" src="./logo_insta.png" crossorigin="anonymous">
+        <img id="logo-github" src="./logo-github.png" crossorigin="anonymous">
+      </a-assets>
       
       <a-marker preset="hiro" gestion-carte>
         </a-marker>
       
-      <a-entity camera></a-entity>
+      <a-entity camera cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
     </a-scene>
   </body>
 </html>
