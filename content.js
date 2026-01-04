@@ -2,15 +2,34 @@
   function registerComponents(config) {
     const { assets, links } = config;
 
+    AFRAME.registerComponent('cursor-listener', {
+      init: function () {
+        this.el.addEventListener('mouseenter', function () {
+          this.setAttribute('scale', '1.2 1.2 1.2');
+        });
+        this.el.addEventListener('mouseleave', function () {
+          this.setAttribute('scale', '1 1 1');
+        });
+      }
+    });
+
     AFRAME.registerComponent('gestion-carte', {
       init: function () {
         console.log('--- Initialisation de la Carte Alexandre Dubois ---');
         this.config = config;
 
+        // Écouter les événements du marqueur
+        this.el.addEventListener('markerFound', () => {
+          console.log('✅ Pattern trouvé !');
+        });
+
+        this.el.addEventListener('markerLost', () => {
+          console.log('❌ Pattern perdu !');
+        });
+
         this.creerBandeauEtudes();
         this.creerTexteHaut();
         this.creerReseauxBas();
-        this.creerCercleCote();
       },
 
       creerBandeauEtudes: function() {
@@ -35,25 +54,9 @@
         logoNom.setAttribute('height', '0.6');
         logoNom.setAttribute('width', '0.6');
         logoNom.setAttribute('rotation', '-90 0 0');
-        logoNom.setAttribute('position', '-0.9 0 0');
-
-        const texte = document.createElement('a-text');
-        texte.setAttribute('value', 'ALEXANDRE DUBOIS');
-        texte.setAttribute('align', 'left');
-        texte.setAttribute('color', '#333333');
-        texte.setAttribute('width', '6');
-        texte.setAttribute('rotation', '-90 0 0');
-        texte.setAttribute('position', '-0.2 0 0');
-        texte.setAttribute('animation', {
-          property: 'position',
-          from: '0 -0.5 0',
-          to: '0 0 0',
-          dur: 1500,
-          easing: 'easeOutQuad'
-        });
+        logoNom.setAttribute('position', '0 0 0');
 
         groupeTexte.appendChild(logoNom);
-        groupeTexte.appendChild(texte);
         this.el.appendChild(groupeTexte);
       },
 
@@ -79,8 +82,9 @@
             transparent: true
           });
           boule.classList.add('clickable');
+          boule.setAttribute('cursor-listener', '');
           boule.addEventListener('click', () => {
-            window.location.href = social.url;
+            window.open(social.url, '_blank');
           });
 
           boule.setAttribute('animation', {
@@ -98,22 +102,7 @@
         this.el.appendChild(groupeReseaux);
       },
 
-      creerCercleCote: function() {
-        const { assets, links } = this.config;
-        const cercleLogo = document.createElement('a-circle');
 
-        cercleLogo.setAttribute('color', 'white');
-        cercleLogo.setAttribute('radius', '0.5');
-        cercleLogo.setAttribute('rotation', '-90 0 0');
-        cercleLogo.setAttribute('position', '1.5 0 0');
-        cercleLogo.setAttribute('src', assets.logos.main);
-        cercleLogo.classList.add('clickable');
-        cercleLogo.addEventListener('click', () => {
-          window.location.href = links.site;
-        });
-
-        this.el.appendChild(cercleLogo);
-      }
     });
   }
 
