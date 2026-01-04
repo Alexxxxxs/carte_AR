@@ -21,7 +21,7 @@
         <img id="logo-github" src="./logo-github.png" crossorigin="anonymous">
       </a-assets>
       
-      <a-marker preset="hiro" gestion-carte>
+      <a-marker preset="hiro" gestion-carte smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
         </a-marker>
       
       <a-entity camera cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>

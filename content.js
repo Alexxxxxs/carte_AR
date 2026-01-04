@@ -57,7 +57,7 @@
           });
           boule.classList.add('clickable');
           boule.addEventListener('click', () => {
-            window.open(social.url, '_blank');
+            window.location.href = social.url;
           });
 
           boule.setAttribute('animation', {
@@ -86,7 +86,7 @@
         cercleLogo.setAttribute('src', assets.logos.main);
         cercleLogo.classList.add('clickable');
         cercleLogo.addEventListener('click', () => {
-          window.open(links.site, '_blank');
+          window.location.href = links.site;
         });
 
         this.el.appendChild(cercleLogo);
