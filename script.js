@@ -1,1 +1,0 @@
-// Fichier legacy non utilisé ; conservé vide pour éviter les erreurs.

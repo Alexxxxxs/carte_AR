@@ -1,0 +1,33 @@
+/* Réinitialise la page pour un affichage AR plein écran */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  overscroll-behavior: none;
+}
+
+/* Conteneur qui force la scène AR à occuper tout le viewport */
+.ar-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+
+/* Force vidéo/canvas/scene à remplir l'écran (utile mobile) */
+#mindar-video,
+video,
+canvas,
+a-scene {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover;
+  max-width: none;
+  max-height: none;
+}

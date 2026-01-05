@@ -6,8 +6,14 @@
 .vscode/
 .idea/
 
+# SSL keys
+localhost.pem
+localhost-key.pem
+
 # Temporary files
 *.tmp
 *.bak
 *.swp
 *~
+
+

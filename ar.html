@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta + bibliothèques A-Frame et MindAR -->
+    <title>Expérience AR - Carte de Visite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <!-- Styles plein écran et superposition AR -->
+    <link rel="stylesheet" href="css/ar.css" />
+    <!-- Logique AR (son + navigation) -->
+    <script src="app/ar.js" defer></script>
+</head>
+<body>
+    <!-- Bouton de retour vers la page d'accueil -->
+    <div class="absolute top-4 left-4 z-30">
+        <button id="back-btn" class="px-4 py-2 rounded-lg bg-white/80 text-slate-900 text-sm font-semibold shadow hover:bg-white">Retour</button>
+    </div>
+
+    <div class="ar-wrapper">
+        <!-- Scène A-Frame pilotée par MindAR (image target index 0) -->
+        <a-scene
+            mindar-image="imageTargetSrc: ./assets/targets/targets.mind; autoStart: true; uiLoading: true;"
+            color-space="sRGB"
+            renderer="colorManagement: true, physicallyCorrectLights"
+            vr-mode-ui="enabled: false"
+            device-orientation-permission-ui="enabled: false"
+            embedded>
+
+            <!-- Préchargement des assets 3D / images / audio -->
+            <a-assets>
+                <a-asset-item id="logo-3d-asset" src="assets/models/Logo-AD.gltf"></a-asset-item>
+                <img id="img-linkedin" src="assets/images/logo-linkedin.png">
+                <img id="img-insta" src="assets/images/logo_insta.png">
+                <img id="img-github" src="assets/images/logo-github.png">
+                <audio id="sound1" src="assets/audio/sound1.mp3"></audio>
+            </a-assets>
+
+            <!-- Caméra fixe (MindAR gère le tracking) -->
+            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+            <!-- Entité son jouée lors de la détection du marqueur -->
+            <a-entity id="scan-sound" sound="src: #sound1; autoplay: false; loop: false; positional: false; volume: 1"></a-entity>
+
+            <!-- Cible MindAR n°0 : texte, logo 3D animé et icônes -->
+            <a-entity id="mindar-target-0" mindar-image-target="targetIndex: 0">
+                <a-text
+                    value="BUT MMI 3 - 2025-2026"
+                    color="blue"
+                    position="-0.5 0.4 0"
+                    scale="0.5 0.5 0.5">
+                </a-text>
+
+                <!-- Conteneur des éléments visibles au-dessus du marqueur -->
+                <a-entity position="0.45 0.4 0">
+                    <a-entity
+                        gltf-model="#logo-3d-asset"
+                        scale="3.5 3.5 3.5"
+                        position="-0.1 -0.25 0"
+                        animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear">
+                    </a-entity>
+
+                    <a-image
+                        src="#img-linkedin"
+                        position="-0.3 -0.8 0"
+                        scale="0.15 0.15 0.15">
+                    </a-image>
+
+                    <a-image
+                        src="#img-insta"
+                        position="-0.5 -0.8 0"
+                        scale="0.15 0.15 0.15">
+                    </a-image>
+
+                    <a-image
+                        src="#img-github"
+                        position="-0.7 -0.8 0"
+                        scale="0.15 0.15 0.15">
+                    </a-image>
+                </a-entity>
+            </a-entity>
+        </a-scene>
+    </div>
+</body>
+</html>

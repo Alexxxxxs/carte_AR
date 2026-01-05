@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Carte de Visite AR - Modulaire</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    
-    <script src="loader.js"></script>
-    <script src="content.js"></script>
-    <script src="app.js"></script>
-  </head>
-  
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-assets>
-        <!-- Précharge le logo utilisé sur le cercle latéral -->
-        <img id="logo" src="./Logo-black.png" crossorigin="anonymous">
-        <!-- Logos réseaux sociaux -->
-        <img id="logo-linkedin" src="./logo-linkedin.png" crossorigin="anonymous">
-        <img id="logo-instagram" src="./logo_insta.png" crossorigin="anonymous">
-        <img id="logo-github" src="./logo-github.png" crossorigin="anonymous">
-      </a-assets>
-      
-      <a-marker preset="hiro" gestion-carte smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-        </a-marker>
-      
-      <a-entity camera cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-    </a-scene>
-  </body>
+<head>
+    <!-- Meta et dépendances globales -->
+    <title>Carte de Visite AR - Alexandre Dubois</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Logique d'UI de la page d'accueil -->
+    <script src="app/index.js" defer></script>
+
+</head>
+
+<body class="bg-slate-950 text-slate-100">
+    <main class="min-h-screen">
+        <!-- Hero qui présente la carte et les actions principales -->
+        <section id="landing-screen" class="min-h-screen flex items-center justify-center px-6 py-10">
+            <div class="max-w-5xl w-full grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+                <div class="space-y-6">
+                    <div class="space-y-3">
+                        <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Alexandre Dubois</p>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">Carte de visite AR</h1>
+                        <p class="text-slate-300 max-w-2xl">Choisissez voir la carte en plein écran ou lancer l'expérience AR.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <button id="view-card-btn" class="px-5 py-3 rounded-xl bg-white text-slate-900 font-semibold hover:scale-[1.02] transition will-change-transform shadow-lg shadow-white/10">Voir la carte</button>
+                        <a href="ar.html" class="px-5 py-3 rounded-xl bg-indigo-500 text-white font-semibold hover:bg-indigo-400 transition inline-flex items-center justify-center">Lancer l'expérience AR</a>
+                    </div>
+                    <div class="text-sm text-slate-400 space-y-1">
+                        <p>1. Placez-vous dans un endroit bien éclairé.</p>
+                        <p>2. Autorisez l'accès à la caméra lorsqu'on vous le demande.</p>
+                    </div>
+                </div>
+                <!-- Carte illustrative (placeholder) -->
+                <div class="relative h-[360px] sm:h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 shadow-2xl">
+                    <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,#6366f1,transparent_35%),radial-gradient(circle_at_80%_0%,#22d3ee,transparent_30%)]"></div>
+                    <div class="relative h-full flex items-center justify-center">
+                        <p class="text-center text-slate-200 font-medium px-8">Cliquez sur « Voir la carte » pour l'afficher en plein écran ou lancez directement l'AR.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overlay plein écran pour afficher l'image de la carte -->
+        <div id="card-overlay" class="fixed inset-0 z-20 hidden items-center justify-center bg-black/80 px-4 py-6">
+            <div class="relative w-full max-w-5xl h-full max-h-[90vh] bg-slate-900 border border-white/15 rounded-2xl overflow-hidden shadow-2xl">
+                <button id="close-overlay-btn" class="absolute top-3 right-3 z-30 rounded-full bg-white/10 text-white px-3 py-1 text-sm hover:bg-white/20">Fermer</button>
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-800/70 to-slate-900/70"></div>
+                <img src="assets/images/CDV.png" alt="Apercu de la carte" class="relative z-10 w-full h-full object-contain" />
+            </div>
+        </div>
+    </main>
+</body>
 </html>
