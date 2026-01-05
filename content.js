@@ -39,7 +39,8 @@
         bandeau.setAttribute('color', '#2b3d50');
         bandeau.setAttribute('width', '8');
         bandeau.setAttribute('rotation', '-90 0 0');
-        bandeau.setAttribute('position', '-0.8 0 -1.9');
+        bandeau.setAttribute('position', '0 0.3 -0.8');
+        bandeau.setAttribute('scale', '0.8 0.8 0.8');
 
         this.el.appendChild(bandeau);
       },
@@ -47,12 +48,12 @@
       creerTexteHaut: function() {
         const { assets } = this.config;
         const groupeTexte = document.createElement('a-entity');
-        groupeTexte.setAttribute('position', '-0.8 0 -1.2');
+        groupeTexte.setAttribute('position', '0 0.3 0.2');
 
         const logoNom = document.createElement('a-plane');
         logoNom.setAttribute('src', assets.logos.main);
-        logoNom.setAttribute('height', '0.6');
-        logoNom.setAttribute('width', '0.6');
+        logoNom.setAttribute('height', '0.5');
+        logoNom.setAttribute('width', '0.5');
         logoNom.setAttribute('rotation', '-90 0 0');
         logoNom.setAttribute('position', '0 0 0');
 
@@ -63,7 +64,7 @@
       creerReseauxBas: function() {
         const { assets, links } = this.config;
         const groupeReseaux = document.createElement('a-entity');
-        groupeReseaux.setAttribute('position', '-0.8 0 1.6');
+        groupeReseaux.setAttribute('position', '0 -0.2 0.5');
 
         const reseaux = [
           { x: -0.5, assetId: assets.logos.linkedin, url: links.linkedin },
